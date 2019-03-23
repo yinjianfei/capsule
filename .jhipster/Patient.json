@@ -1,0 +1,26 @@
+{
+    "name": "Patient",
+    "fields": [
+        {
+            "fieldName": "userId",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "capsule",
+            "otherEntityRelationshipName": "patient",
+            "relationshipName": "capsules"
+        }
+    ],
+    "changelogDate": "20190323055154",
+    "entityTableName": "patient",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

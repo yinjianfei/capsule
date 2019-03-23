@@ -1,0 +1,39 @@
+{
+    "name": "ExaminationReading",
+    "fields": [
+        {
+            "fieldName": "examinationId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "expertId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "applicantId",
+            "javadoc": "申请人id",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "applicantRole",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "examinationReading",
+            "relationshipName": "diagnoses"
+        }
+    ],
+    "changelogDate": "20190323055201",
+    "entityTableName": "examination_reading",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

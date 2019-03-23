@@ -1,0 +1,53 @@
+{
+    "name": "Comment",
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 2048
+        },
+        {
+            "fieldName": "commentBy",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "commentAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "examination",
+            "otherEntityRelationshipName": "comments",
+            "relationshipName": "examination",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "capsuleImage",
+            "otherEntityRelationshipName": "comments",
+            "relationshipName": "capsuleImage",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "examinationReading",
+            "otherEntityRelationshipName": "diagnoses",
+            "relationshipName": "examinationReading",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190323055200",
+    "entityTableName": "comment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

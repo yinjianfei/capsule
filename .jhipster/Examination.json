@@ -1,0 +1,46 @@
+{
+    "name": "Examination",
+    "fields": [
+        {
+            "fieldName": "patientId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "doctorId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "useDate",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "capsule",
+            "otherEntityRelationshipName": "examination",
+            "relationshipName": "capsule",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "examination",
+            "relationshipName": "comments"
+        }
+    ],
+    "changelogDate": "20190323055158",
+    "entityTableName": "examination",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

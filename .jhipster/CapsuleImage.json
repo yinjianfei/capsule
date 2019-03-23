@@ -1,0 +1,33 @@
+{
+    "name": "CapsuleImage",
+    "fields": [
+        {
+            "fieldName": "imageUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "capsuleImage",
+            "relationshipName": "comments"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "capsule",
+            "otherEntityRelationshipName": "images",
+            "relationshipName": "capsule",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190323055159",
+    "entityTableName": "capsule_image",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

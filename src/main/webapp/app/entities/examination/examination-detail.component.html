@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="examination">
+            <h2><span>Examination</span> {{examination.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Patient Id</span></dt>
+                <dd>
+                    <span>{{examination.patientId}}</span>
+                </dd>
+                <dt><span>Doctor Id</span></dt>
+                <dd>
+                    <span>{{examination.doctorId}}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{examination.status}}</span>
+                </dd>
+                <dt><span>Use Date</span></dt>
+                <dd>
+                    <span>{{examination.useDate}}</span>
+                </dd>
+                <dt><span>Capsule</span></dt>
+                <dd>
+                    <div *ngIf="examination.capsuleId">
+                        <a [routerLink]="['/capsule', examination.capsuleId, 'view']">{{examination.capsuleId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/examination', examination.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

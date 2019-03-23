@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span>Examinations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-examination" [routerLink]="['/examination/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Examination
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="examinations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="patientId"><span>Patient Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="doctorId"><span>Doctor Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="useDate"><span>Use Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="capsuleId"><span>Capsule</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let examination of examinations ;trackBy: trackId">
+                <td><a [routerLink]="['/examination', examination.id, 'view' ]">{{examination.id}}</a></td>
+                <td>{{examination.patientId}}</td>
+                <td>{{examination.doctorId}}</td>
+                <td>{{examination.status}}</td>
+                <td>{{examination.useDate}}</td>
+                <td>
+                    <div *ngIf="examination.capsuleId">
+                        <a [routerLink]="['../capsule', examination.capsuleId , 'view' ]" >{{examination.capsuleId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/examination', examination.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/examination', examination.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'examination', { outlets: { popup: examination.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="examinations && examinations.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

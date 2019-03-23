@@ -1,0 +1,44 @@
+{
+    "name": "Capsule",
+    "fields": [
+        {
+            "fieldName": "capsuleType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "capsuleNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "capsuleImage",
+            "otherEntityRelationshipName": "capsule",
+            "relationshipName": "images"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "examination",
+            "otherEntityRelationshipName": "capsule",
+            "relationshipName": "examination",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "patient",
+            "otherEntityRelationshipName": "capsules",
+            "relationshipName": "patient",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190323055157",
+    "entityTableName": "capsule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

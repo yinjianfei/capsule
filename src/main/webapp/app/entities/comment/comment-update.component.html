@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-comment-heading">Create or edit a Comment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!comment.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="comment.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_content">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                        [(ngModel)]="comment.content" maxlength="2048"/>
+                    <div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.content?.errors?.maxlength">
+                        This field cannot be longer than 2048 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commentBy">Comment By</label>
+                    <input type="number" class="form-control" name="commentBy" id="field_commentBy"
+                        [(ngModel)]="comment.commentBy" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commentAt">Comment At</label>
+                    <div class="d-flex">
+                        <input id="field_commentAt" type="datetime-local" class="form-control" name="commentAt" [(ngModel)]="commentAt" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_examination">Examination</label>
+                    <select class="form-control" id="field_examination" name="examination" [(ngModel)]="comment.examinationId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="examinationOption.id" *ngFor="let examinationOption of examinations; trackBy: trackExaminationById">{{examinationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_capsuleImage">Capsule Image</label>
+                    <select class="form-control" id="field_capsuleImage" name="capsuleImage" [(ngModel)]="comment.capsuleImageId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="capsuleImageOption.id" *ngFor="let capsuleImageOption of capsuleimages; trackBy: trackCapsuleImageById">{{capsuleImageOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_examinationReading">Examination Reading</label>
+                    <select class="form-control" id="field_examinationReading" name="examinationReading" [(ngModel)]="comment.examinationReadingId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="examinationReadingOption.id" *ngFor="let examinationReadingOption of examinationreadings; trackBy: trackExaminationReadingById">{{examinationReadingOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

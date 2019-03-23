@@ -1,0 +1,52 @@
+entity Patient{
+	userId Long,
+}
+entity Doctor{
+	userId Long,
+}
+entity Expert{
+	userId Long,
+}
+entity Capsule{
+
+	capsuleType String,
+    //capsule出厂编号,全局唯一
+    capsuleNumber String
+}
+entity Examination{
+	//病人ID 使用paID
+	patientId Long,
+    //病人责任医生ID doctorId
+    doctorId Long,
+    status String,
+    useDate String,
+}
+entity CapsuleImage{
+	imageUrl String
+}
+entity Comment{
+	content String maxlength(2048),
+    commentBy Long,
+    commentAt Instant
+}
+entity ExaminationReading{
+	examinationId Long,
+    expertId Long,
+    /**申请人id **/
+    applicantId Long,
+    applicantRole String,
+}
+relationship OneToMany{
+	Examination{comments} to Comment{examination},
+ 	CapsuleImage{comments} to Comment{capsuleImage},
+    ExaminationReading{diagnoses} to Comment{examinationReading},
+	Capsule{images} to CapsuleImage{capsule},
+    Patient{capsules} to Capsule{patient}
+}
+relationship OneToOne{
+	Examination{capsule} to Capsule{examination}
+}
+paginate * with infinite-scroll
+paginate * with pagination
+service * with serviceClass
+dto * with mapstruct

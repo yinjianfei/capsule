@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="comment">
+            <h2><span>Comment</span> {{comment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Content</span></dt>
+                <dd>
+                    <span>{{comment.content}}</span>
+                </dd>
+                <dt><span>Comment By</span></dt>
+                <dd>
+                    <span>{{comment.commentBy}}</span>
+                </dd>
+                <dt><span>Comment At</span></dt>
+                <dd>
+                    <span>{{comment.commentAt}}</span>
+                </dd>
+                <dt><span>Examination</span></dt>
+                <dd>
+                    <div *ngIf="comment.examinationId">
+                        <a [routerLink]="['/examination', comment.examinationId, 'view']">{{comment.examinationId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Capsule Image</span></dt>
+                <dd>
+                    <div *ngIf="comment.capsuleImageId">
+                        <a [routerLink]="['/capsule-image', comment.capsuleImageId, 'view']">{{comment.capsuleImageId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Examination Reading</span></dt>
+                <dd>
+                    <div *ngIf="comment.examinationReadingId">
+                        <a [routerLink]="['/examination-reading', comment.examinationReadingId, 'view']">{{comment.examinationReadingId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/comment', comment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

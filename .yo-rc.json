@@ -1,0 +1,34 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.capsule"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "capsule",
+        "packageName": "com.capsule",
+        "packageFolder": "com/capsule",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "no",
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "gradle",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "MTg0ZjZiMjRkZmJkMGY1NjlmN2Q5ODEyYTAwZGIxOWQ4NDU3OWQ5YThjMGQwMzU3YzBmZDc1ZjliMGRlODVkMzk5NzgzNjBjMmFhNWIwZGIzODg5OGMxNDA1YzJjMTJiYWFkNTQxZGU3ZTRiYjVmOWI3YzRlMzQ1NTc2Mjg5ODc=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}
